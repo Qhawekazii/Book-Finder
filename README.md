@@ -1,6 +1,6 @@
-# Book Finder API App
+# Book Finder
 
-A React app that searches and displays book data from the free [Open Library Search API](https://openlibrary.org/dev/docs/api/search).
+This is a small React app for searching books with the free [Open Library Search API](https://openlibrary.org/dev/docs/api/search).
 
 ## API used
 
@@ -12,15 +12,14 @@ https://openlibrary.org/search.json?q={searchTerm}
 
 Open Library is listed in the [public-apis repository](https://github.com/public-apis/public-apis) and does not require an API key.
 
-## Features
+## What it does
 
 - Search for books by title, author, or topic
-- Fetch fresh API data when the search input changes
-- Display useful book details such as title, author, publication year, edition count, and subjects
-- Show a loading spinner while data is being fetched
-- Handle errors with a clear, friendly message
-- Keep all API logic inside a custom React hook: `useBookSearch`
-- Responsive layout with semantic HTML and accessible form labels
+- Fetch new results when the search changes
+- Show book titles, authors, first published year, edition count, subjects, and covers where available
+- Show a loading spinner while waiting for the API
+- Show an error message if the request fails
+- Keep the API logic inside `useBookSearch`
 
 ## Tech stack
 
@@ -64,11 +63,11 @@ src/
   main.jsx
 ```
 
-## Challenge I hit
+## Challenge
 
-One challenge was making the search feel responsive without calling the API on every single keystroke. I solved this by adding a short debounce inside the custom hook, so the app waits briefly before sending the next search request.
+The main challenge was stopping the app from calling the API too many times while typing. I added a short delay in the custom hook before running the search.
 
 ## Submission note
 
 API used: Open Library Search API.  
-Challenge: Debouncing search requests while still keeping loading and error states clear for the user.
+Challenge: Adding a delay to the search so the app does not send a request for every key press.
